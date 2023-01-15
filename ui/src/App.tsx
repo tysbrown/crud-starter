@@ -38,15 +38,7 @@ const App = ({ client }: AppProps): JSX.Element => {
     <>
       <section className="p-5">
         {sortedPosts?.map((post: QueryResponse) => (
-          <Post
-            key={post.id}
-            id={post.id}
-            body={post.body}
-            createdAt={post.createdAt}
-            updatedAt={post.updatedAt}
-            deletePost={deletePost}
-            editPost={editPost}
-          />
+          <Post {...post} key={post.id} deletePost={deletePost} editPost={editPost} />
         ))}
       </section>
       <form
