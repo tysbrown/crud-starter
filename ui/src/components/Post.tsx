@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect } from "react"
 import { UseMutateFunction } from "react-query"
 import { QueryResponse } from "../types"
 import { FieldValues, useForm } from "react-hook-form"
@@ -16,6 +16,7 @@ const Post = ({ body, id, createdAt, updatedAt, deletePost, editPost }: Props) =
   const { register, handleSubmit, setFocus } = useForm()
 
   // Resize the textarea to fit the content, on mount and when edit/save button is clicked
+  // DOM manipulation used instead of useRef as the element already has a ref by way of the register method
   useEffect(() => {
     const textField = document.getElementById(id.toString())
     if (textField) {
