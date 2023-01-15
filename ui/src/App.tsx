@@ -29,15 +29,13 @@ const App = ({ client }: AppProps): JSX.Element => {
     reset()
   }
 
-  const sortedPosts = data
-
   if (error) console.log(error)
   if (isLoading) return <h1>Loading...</h1>
 
   return (
     <>
       <section className="p-5">
-        {sortedPosts?.map((post: QueryResponse) => (
+        {data?.map((post: QueryResponse) => (
           <Post {...post} key={post.id} deletePost={deletePost} editPost={editPost} />
         ))}
       </section>
